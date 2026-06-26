@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Library App - Book Catalog</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <h1 class="mb-4">Library Catalog</h1>
-        <table class="table table-striped table-bordered bg-white">
+<?= $this->extend('layouts/main') ?>
+
+<?= $this->section('content') ?>
+
+
+        <h2 class="mb-4">Books</h2>
+        <table class="col-12 col-sm-9 table table-striped table-bordered bg-white">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
                     <th>Author</th>
                     <th>Status</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +24,9 @@
                         <td><?= esc($book['title']) ?></td>
                         <td><?= esc($book['author']) ?></td>
                         <td><span class="badge bg-<?= $book['status'] == 'available' ? 'success' : 'warning' ?>"><?= $book['status'] ?></span></td>
+                        <td><a href="/book/<?= $book['id'] ?>" class="btn btn-sm btn-outline-primary">View</a></td> 
+                        <td><a href="/book/edit/<?= $book['id'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a></td>
+                        <td><a href="/book/delete/<?= $book['id'] ?>" class="btn btn-sm btn-outline-danger">Delete</a></td>
                     </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -35,5 +37,5 @@
             </tbody>
         </table>
     </div>
-</body>
-</html>
+
+    <?= $this->endSection() ?>

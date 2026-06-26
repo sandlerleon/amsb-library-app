@@ -32,6 +32,11 @@ class CreateBooksTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',                                
             ],
+            'pub_year' => [
+                'type'           => 'INT',
+                'constraint'     => 4,
+                'null' => true,
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
